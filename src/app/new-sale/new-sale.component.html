@@ -1,18 +1,62 @@
 
-<div class="container">
-        <div class="txtbox" >
-                <form>
-                        <div class="form-group">
+<div id="container">
+        
+                <form class="Newform" [formGroup]="SalesForm" autocomplete="off">
                         <label>Customer Name:</label>&nbsp;
-                        <input type="text" name="name" formControlName="name" style="width: 500px;">
+                        <input type="text" name="name" formControlName="cname" style="width: 500px;">&nbsp;
+                        <label>Doctor's Name:</label>&nbsp;
+                        <input type="text" name="dname" formControlName="dname" style="width: 500px;">
                         <br><br>
-                        <label>Item Name:</label>&nbsp;
-                        <input type="text" name="iName" formControlName="iName">
+                        <div class="recommendation">
+                            <label>Item Name:</label>&nbsp;
+                            <input type="text" name="name" formControlName = "name" (keyup)="getItem()" list="dl1" required>&nbsp;
+                            <div *ngIf='SalesForm.value.name.length >2'>
+                                <datalist id="dl1" >
+                                    <option *ngFor="let recom of _nameRecommend" [value] ="recom.name" >{{recom.name}}</option>
+                                </datalist>
+                                </div>
+                                </div>
+                                <div class="recommendation">
+                        <label>Batch:</label>&nbsp;
+                        <input type="text" name="batch" formControlName="batch" (keyup)="getFullRecommendation()" list="dl2" required>
+                        <datalist id="dl2">
+                            <option *ngFor="let recomd of _fullrecommend" [value] ="recomd.batch">Name: {{recomd.name}}, Batch: {{recomd.category}}, Exp: {{recomd.expdate}}, Quant: {{recomd.quant}}, Price: {{recomd.price}}}</option>
+                        </datalist>
+                      </div>
                         <label style="margin-left: 20px;">Quantity:</label>&nbsp;
                         <input type="number" name="quant" formControlName="quant">
-                        <button type="submit" class="btn btn-default" style="background-color: dodgerblue; margin-left: 25px;;">Add</button>
-                        </div>
+                        <button type="submit" class="btn btn-default" (click)="addItem()" style="background-color: dodgerblue; margin-left: 25px;;">Add</button>
+                        <button type="submit" class="btn btn-default" (click)="getBill()" style="background-color: dodgerblue; margin-left: 25px;;">Get Bill</button>
                     </form>   
-                    
-        </div> 
+                    <div *ngIf = "checkquant == 1"><span style="color: red;">Entered quantity is more than stock present</span></div>
+                    <hr>
+                    <br>
+                    <h6 style="text-align: center;">Sales Memo</h6>
+                    <table style="width:100%">
+                        
+                        <tr>
+                          <th style="width: 1%;">S.No</th>
+                          <th>Item Name</th>
+                          <th>Category</th>
+                          <th>Batch No.</th>
+                          <th>Expiry Date</th>
+                          <th>Quantity</th>
+                          <th>MRP</th>
+                          <th>Amount</th>
+                        </tr>
+                        <tr *ngFor= "let iterator of printarr, let i = index">
+                          <td>{{i+1}}.</td>
+                          <td>{{iterator.name}}</td>
+                          <td>{{iterator.category}}</td>
+                          <td>{{iterator.batch}}</td>
+                          <td>{{iterator.expdate}}</td>
+                          <td>{{quantdata[i]}}</td>
+                          <td>Rs. {{iterator.price}}</td>
+                          <td>Rs. {{amountdata[i]}}</td>
+                        </tr>
+                        <tr *ngIf = "check ==1">
+                          <td colspan="7"></td>
+                          <td>Total: Rs. {{total}}</td>
+                        </tr>
+                      </table>  
 </div>

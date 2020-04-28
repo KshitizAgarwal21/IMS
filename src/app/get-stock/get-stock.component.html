@@ -1,0 +1,48 @@
+<div id="container">
+  <form [formGroup] = "getStockForm" autocomplete="off">
+    <div class="recommendation">
+    <label>Item Name:</label>&nbsp;
+    <input type="text" name="name" formControlName = "name" (keyup)="getItem()" list="dl1" required>&nbsp;
+    <div *ngIf='getStockForm.value.name.length >2'>
+        <datalist id="dl1" >
+            <option *ngFor="let recom of _nameRecommend" [value] ="recom.name" >{{recom.name}}</option>
+        </datalist>
+        </div>
+        </div>
+    <label>Item Category:</label>&nbsp;
+    <input type="text" name="categ" formControlName = "categ">&nbsp;&nbsp;
+    <button type="submit" (click)="getMedDetails()" class="btn btn-default" style="background-color: dodgerblue;">Get Details</button>
+    <button type="button" class="btn btn-default" (click)="getFullStock()" style="float: right; margin-right: 100px; background-color: dodgerblue;">Get Inventory Details </button>
+    </form>
+    <hr>
+    <div *ngIf="check == 2"><span style="color: red;">No data found</span></div>
+    <table style="width:100%">
+                        
+            <tr>
+              <th style="width: 1%;">S.No</th>
+              <th>Item Name</th>
+              <th>Category</th>
+              <th>Batch No.</th>
+              <th>Expiry Date</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+            
+                  <tr *ngFor = "let iter of _getmedData, let i = index" >
+                      <td>{{i+1}}.</td>
+                      <td>{{iter.name}}</td>
+                      <td>{{iter.category}}</td>
+                      <td>{{iter.batch}}</td>
+                      <td>{{iter.expdate}}</td>
+                      <td>{{iter.quant}}</td>
+                      <td>Rs. {{iter.price}}</td>
+                      </tr> 
+                      <tr>
+                        <td colspan="5"></td>
+                        <td>Total: {{_total}}</td>
+                        <td></td>
+                        
+                      </tr>           
+          </table> 
+
+</div>

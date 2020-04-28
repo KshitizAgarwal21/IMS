@@ -1,0 +1,101 @@
+<div id = "divComp">
+        <div class="form-group">
+<form [formGroup]="stockAddForm" (ngSubmit)="addStock()" autocomplete="off">
+    <div class="recommendation">
+    <label>Item Name:</label>&nbsp;
+    <input type="text" name="name" formControlName="name" style="text-transform: uppercase;" (keyup)="getItem()" list="dl1" required>&nbsp;
+    <div *ngIf='stockAddForm.value.name.length >2'>
+        <datalist id="dl1" >
+            <option *ngFor="let recom of _nameRecommend" [value] ="recom.name" >{{recom.name}}</option>
+        </datalist>
+    </div>
+    </div>
+    <label>Category:</label>&nbsp;&nbsp;
+    <input type="text" name="Category" formControlName="category" style="width: 5%; text-transform: uppercase;">
+    &nbsp;<label>Quantity:</label>&nbsp;
+    <input type="number" name="quantity" formControlName="quant" style="width: 5%;">
+    &nbsp;<label>Price:</label>&nbsp;
+    <input type="number" name="price" formControlName="price" style="width: 5%;">
+    &nbsp;
+    &nbsp;<label>Batch No:</label>&nbsp;
+    <input type="text" name="batch" formControlName="batch">
+    &nbsp;<label>Expiry Date:</label>&nbsp;
+    <input type="date" name="expDate" formControlName="expdate">
+    &nbsp;&nbsp;<button type="submit" class="btn btn-default" style="background-color: dodgerblue;">Add</button>
+    <div *ngIf = "_errormsg != null "><span style="color: red; margin-left: 45%;">All fields required</span></div>
+</form>
+</div>
+
+</div>
+<div class="resultDiv" *ngIf="updateQuant == true">
+    <h2 style="color: dodgerblue;">Stock Updated Successfully</h2>
+        <table style="width:100%">
+                        
+                <tr>
+                  <th style="width: 1%;">S.No</th>
+                  <th>Item Name</th>
+                  <th>Category</th>
+                  <th>Batch No.</th>
+                  <th>Expiry Date</th>
+                  <th>Quantity</th>
+                  <th>MRP</th>
+                </tr>
+                <tr>
+                  <td>1.</td>
+                  <td>{{_name}}</td>
+                  <td>{{_category}}</td>
+                  <td>{{_batch}}</td>
+                  <td>{{_expdate}}</td>
+                  <td>{{updatedCount}}</td>
+                  <td>{{_price}}</td>
+                </tr>
+              </table>  
+</div>
+<div class="resultDiv" *ngIf="newBatch == true">
+        <h2 style="color: dodgerblue;">New Batch of Item Inserted</h2>
+            <table style="width:100%">
+                            
+                    <tr>
+                      <th style="width: 1%;">S.No</th>
+                      <th>Item Name</th>
+                      <th>Category</th>
+                      <th>Batch No.</th>
+                      <th>Expiry Date</th>
+                      <th>Quantity</th>
+                      <th>MRP</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>{{_name}}</td>
+                      <td>{{_category}}</td>
+                      <td>{{_batch}}</td>
+                      <td>{{_expdate}}</td>
+                      <td>{{_quant}}</td>
+                      <td>{{_price}}</td>
+                    </tr>
+                  </table>  
+    </div>
+    <div class="resultDiv" *ngIf="newItem == true">
+            <h2 style="color: dodgerblue;">New Item Inserted</h2>
+                <table style="width:100%">
+                                
+                        <tr>
+                          <th style="width: 1%;">S.No</th>
+                          <th>Item Name</th>
+                          <th>Category</th>
+                          <th>Batch No.</th>
+                          <th>Expiry Date</th>
+                          <th>Quantity</th>
+                          <th>MRP</th>
+                        </tr>
+                        <tr>
+                                <td>1.</td>
+                                <td>{{_name}}</td>
+                                <td>{{_category}}</td>
+                                <td>{{_batch}}</td>
+                                <td>{{_expdate}}</td>
+                                <td>{{_quant}}</td>
+                                <td>Rs. {{_price}}</td>
+                        </tr>
+                      </table>  
+        </div>

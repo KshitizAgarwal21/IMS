@@ -1,0 +1,32 @@
+#divComp {
+box-shadow: 10px 10px 5px grey;
+background-color: whitesmoke;
+padding: 15px;
+margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+.resultDiv{
+    box-shadow: 10px 10px 5px grey;
+    background-color: whitesmoke;
+    padding: 15px;
+    margin-top: 25px;
+}
+.recommendation{
+  position: relative;
+  display: inline-block;
+}
+.autocomplete{
+  position: relative;
+  display: inline-block;
+}
+
+datalist{
+  background-color: dodgerblue;
+}
