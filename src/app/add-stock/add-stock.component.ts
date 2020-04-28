@@ -66,7 +66,7 @@ export class AddStockComponent implements OnInit {
       if(result['message'] == "Data added Successfully"){
         this.updateQuant = false;
         this.newBatch = false;
-        console.log("New Item inserted");
+        console.log("New Item inserted in DB");
         this.newItem = true;
       }
     })
