@@ -1,8 +1,9 @@
+<div id="bg">
 <div id="container">
   <form [formGroup] = "getStockForm" autocomplete="off">
     <div class="recommendation">
     <label>Item Name:</label>&nbsp;
-    <input type="text" name="name" formControlName = "name" (keyup)="getItem()" list="dl1" required>&nbsp;
+    <input type="text" name="name" formControlName = "name" style="text-transform: uppercase;"   (keyup)="getItem()" list="dl1" required>&nbsp;
     <div *ngIf='getStockForm.value.name.length >2'>
         <datalist id="dl1" >
             <option *ngFor="let recom of _nameRecommend" [value] ="recom.name" >{{recom.name}}</option>
@@ -10,12 +11,13 @@
         </div>
         </div>
     <label>Item Category:</label>&nbsp;
-    <input type="text" name="categ" formControlName = "categ">&nbsp;&nbsp;
+    <input type="text" name="categ" formControlName = "categ" style="text-transform: uppercase;">&nbsp;&nbsp;
     <button type="submit" (click)="getMedDetails()" class="btn btn-default" style="background-color: dodgerblue;">Get Details</button>
     <button type="button" class="btn btn-default" (click)="getFullStock()" style="float: right; margin-right: 100px; background-color: dodgerblue;">Get Inventory Details </button>
     </form>
     <hr>
     <div *ngIf="check == 2"><span style="color: red;">No data found</span></div>
+    <div *ngIf="InventoryEmpty == 1"><span style="color: red;">No data found</span></div>
     <table style="width:100%">
                         
             <tr>
@@ -44,5 +46,5 @@
                         
                       </tr>           
           </table> 
-
+</div>
 </div>

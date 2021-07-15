@@ -1,9 +1,11 @@
-
+<div id="bg">
 <div id="container">
         
                 <form class="Newform" [formGroup]="SalesForm" autocomplete="off">
                         <label>Customer Name:</label>&nbsp;
                         <input type="text" name="name" formControlName="cname" style="width: 500px;">&nbsp;
+                        <label>Mobile No:</label>&nbsp;
+                        <input type="number" name="mobile" formControlName="cmobile" style="width: 200px;">&nbsp;<br>
                         <label>Doctor's Name:</label>&nbsp;
                         <input type="text" name="dname" formControlName="dname" style="width: 500px;">
                         <br><br>
@@ -59,4 +61,5 @@
                           <td>Total: Rs. {{total}}</td>
                         </tr>
                       </table>  
+</div>
 </div>

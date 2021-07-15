@@ -14,6 +14,7 @@ export class GetStockComponent implements OnInit {
   public _fullTotal : number;
   public check : number=0;
   public _getFullStock;
+  public InventoryEmpty : number;
   constructor(private http : HttpClient) { }
 
   ngOnInit() {
@@ -45,6 +46,9 @@ export class GetStockComponent implements OnInit {
       if(this._getmedData.length>0)
       {
         this._total = result['quant'];
+      }
+      else{
+        this.InventoryEmpty = 1;
       }
     });
   }

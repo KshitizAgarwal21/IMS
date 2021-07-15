@@ -31,6 +31,7 @@ export class NewSaleComponent implements OnInit {
   public checkquant: number;
   SalesForm = new FormGroup({
     cname : new FormControl(''),
+    cmobile : new FormControl(''),
     dname : new FormControl(''),
     name : new FormControl(''),
     batch : new FormControl(''),

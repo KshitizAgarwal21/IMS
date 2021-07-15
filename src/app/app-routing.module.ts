@@ -4,10 +4,13 @@ import { NewSaleComponent } from './new-sale/new-sale.component';
 import { AddStockComponent } from './add-stock/add-stock.component';
 import { GetStockComponent } from './get-stock/get-stock.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+
 
 const routes: Routes = [{path:'', component:WelcomeComponent},{path:'newSale', component:NewSaleComponent},
 {path: 'addStock' , component: AddStockComponent},
-{path: 'getStock', component: GetStockComponent}];
+{path: 'getStock', component: GetStockComponent},
+{path: 'invoice', component: InvoiceComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

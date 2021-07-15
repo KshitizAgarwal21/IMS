@@ -11,13 +11,15 @@ import { GetStockComponent } from './get-stock/get-stock.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { InvoiceComponent } from './invoice/invoice.component';
 @NgModule({
   declarations: [
     AppComponent,
     NewSaleComponent,
     AddStockComponent,
     GetStockComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,
